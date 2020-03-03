@@ -1,0 +1,44 @@
+<form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+    <div formGroupName="userData">
+            {{message}}
+        <div class="imgcontainer">
+          <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+      
+        <div class="container">
+            <div>
+          <label for="username"><b>Email</b></label>
+          <input  type="text"
+          id="email"
+          formControlName="email"
+          placeholder="Enter Email">
+          <span
+                *ngIf="!LoginForm.get('userData.email').valid && LoginForm.get('userData.email').touched"
+                class="help-block">
+                <span *ngIf="LoginForm.get('userData.email').errors['required']">This field is required!</span>
+                <span *ngIf="LoginForm.get('userData.email').errors['email']">Enter valid Email!</span>
+            </span>
+        </div>
+        <div>
+          <label for="psw"><b>Password</b></label>
+          <input type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Enter Password">
+          <span
+                *ngIf="!LoginForm.get('userData.password').valid && LoginForm.get('userData.password').touched"
+                class="help-block">
+                <span *ngIf="LoginForm.get('userData.password').errors['required']">This field is required!</span>
+                <span *ngIf="LoginForm.get('userData.password').errors['minlength']">Password must be at least 6 characters!</span>
+            </span>
+        </div>
+          <button type="submit" [disabled]="LoginForm.invalid">Login</button>
+           <button (click)="register()">Register</button> 
+        </div>
+      
+        <!-- <div class="container" style="background-color:#f1f1f1">
+          <button type="button" class="cancelbtn">Cancel</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div> -->
+    </div>
+</form>

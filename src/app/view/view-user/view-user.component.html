@@ -1,0 +1,50 @@
+
+<div class="sidenav">
+        <a href="javascript:void(0);">View User</a>
+        <a href="javascript:void(0);" (click)="edit_user()">Edit User</a>
+        <!-- <a href="javascript:void(0);" (click)="addUserRole()">Add User Role</a> -->
+        <a *ngIf="role==checkedRole" [routerLink]="" href="javascript:void(0);" (click)="addUserRole()">Add User Role</a>
+        <a *ngIf="role==checkedRole" [routerLink]="" href="javascript:void(0);"  (click)="viewUserRole()">View User Role</a>
+        <a *ngIf="role==checkedRole" [routerLink]="" href="javascript:void(0);" (click)="viewAllUser()" >View All User</a>
+      </div>
+      <!-- <label class="logoutLblPos"> -->
+            <button class="logoutLblPos" (click)="logout()">Logout</button>
+      <!-- </label> -->
+      <div class="main">
+        <h2>View User Details</h2>
+        <table class="display">
+            <tr>
+                <td>
+                   First Name:
+                </td>
+                <td>
+                  {{first_name}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                  Last Name:
+                </td>
+                <td>
+                    {{last_name}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   Email:
+                </td>
+                <td>
+                    {{email}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   User Role:
+                </td>
+                <td>
+                    {{role}}
+                </td>
+            </tr>
+        </table>
+        
+      </div>

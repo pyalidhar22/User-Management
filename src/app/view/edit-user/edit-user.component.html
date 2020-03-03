@@ -1,0 +1,103 @@
+
+<div class="sidenav">
+    <a href="javascript:void(0);" (click)="view_user()">View User</a>
+    <a href="javascript:void(0);">Edit User</a>
+    <!-- <a href="javascript:void(0);" (click)="addUserRole()">Add User Role</a>
+    <a href="javascript:void(0);">View User Role</a> -->
+    <a *ngIf="checkedjobrole==checkedjobrole1" [routerLink]="" href="javascript:void(0);" (click)="addUserRole()">Add User Role</a>
+    <a *ngIf="checkedjobrole==checkedjobrole1" [routerLink]="" href="javascript:void(0);"  (click)="viewUserRole()">View User Role</a>
+    <a *ngIf="checkedjobrole==checkedjobrole1" [routerLink]="" href="javascript:void(0);" (click)="viewAllUser()" >View All User</a>
+  </div>
+  
+<div class="main">
+    <h2>Edit User Details</h2>
+
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+          <div formGroupName="userData">
+            <div class="form-group">
+                <input type="hidden" formControlName="userid">
+                <label for="first_name">First Name</label>
+                    <input
+                    type="text"
+                    id="first_name"
+                    formControlName="first_name"
+                    class="form-control">
+                    <span
+                    *ngIf="!editForm.get('userData.first_name').valid && editForm.get('userData.first_name').touched"
+                    class="help-block">
+                    <span *ngIf="editForm.get('userData.first_name').errors['required']">This field is required!</span>
+                    </span>
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                    <input
+                    type="text"
+                    id="last_name"
+                    formControlName="last_name"
+                    class="form-control">
+                    <span
+                    *ngIf="!editForm.get('userData.last_name').valid && editForm.get('userData.last_name').touched"
+                    class="help-block">
+                    <span *ngIf="editForm.get('userData.last_name').errors['required']">This field is required!</span>
+                    </span>
+            </div>
+            <div class="form-group">
+                <label for="username">Email</label>
+                    <input
+                        type="text"
+                        id="username"
+                        formControlName="email"
+                        class="form-control">
+                        <span
+                            *ngIf="!editForm.get('userData.email').valid && editForm.get('userData.email').touched"
+                            class="help-block">
+                            <span *ngIf="editForm.get('userData.email').errors['required']">This field is required!</span>
+                            <span *ngIf="editForm.get('userData.email').errors['email']">Enter Valid Email!</span>
+                        </span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                    <input
+                    type="text"
+                    id="password"
+                    formControlName="password"
+                    class="form-control">
+                    <span
+                    *ngIf="!editForm.get('userData.password').valid && editForm.get('userData.password').touched"
+                    class="help-block">
+                    <span *ngIf="editForm.get('userData.password').errors['required']">This field is required!</span>
+                    <span *ngIf="editForm.get('userData.password').errors['minlength']">Password must be at least 6 characters!</span>
+                    </span>
+            </div>
+            <!-- <div class="form-group">
+                <select formControlName="user_role">
+                    <option value="">Choose User Roles</option>
+                    <option *ngFor="let u_role of userRoles">{{u_role}}</option>
+                </select>
+            </div> -->
+            <div class="form-group" *ngIf="employeeselected!=checkedjobrole">
+                <label for="userRole">User Role</label>
+                <select formControlName="user_role" class="form-control" [(ngModel)]="employeeselected">
+                    <!-- <option [value]="country" *ngFor="let country of countries">{{country}}</option> -->
+                    <option [ngValue]="user_role.user_role_name" *ngFor="let user_role of user_roles">{{user_role.user_role_name}}</option>
+                </select>
+                <span
+                    *ngIf="!editForm.get('userData.user_role').valid && editForm.get('userData.user_role').dirty"
+                    class="help-block">
+                    <span *ngIf="editForm.get('userData.user_role').errors['required']">This field is required!</span>
+                    </span>
+            </div>
+          </div>
+          <!-- <span
+            *ngIf="!signupForm.valid && signupForm.touched"
+            class="help-block">Please enter valid data!</span> -->
+          <button class="btn button1" type="submit" [disabled]="editForm.invalid">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  

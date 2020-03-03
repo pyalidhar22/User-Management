@@ -1,0 +1,35 @@
+<div class="sidenav">
+        <a href="javascript:void(0);" (click)="view_user()">View User</a>
+        <a href="javascript:void(0);" (click)="edit_user()">Edit User</a>
+        <a href="javascript:void(0);" (click)="addUserRole()">Add User Role</a>
+        <!-- <a *ngIf="role===Project Manager" [routerLink]="" href="javascript:void(0);" (click)="addUserRole()">Add User Role</a> -->
+        <a href="javascript:void(0);" (click)="viewUserRole()">View User Role</a>
+        <a href="javascript:void(0);" (click)="viewAllUser()" >View All User</a>
+</div>
+<div class="main">
+        <h2>Add User Role</h2>
+<div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <form [formGroup]="userRoleForm" (ngSubmit)="onSubmit()">
+              <div formGroupName="userData">
+                <div class="form-group">
+                    <label for="user_role">User Role</label>
+                        <input
+                        type="text"
+                        id="first_name"
+                        formControlName="user_role"
+                        class="form-control">
+                        <span
+                        *ngIf="!userRoleForm.get('userData.user_role').valid && userRoleForm.get('userData.user_role').touched"
+                        class="help-block">
+                        <span *ngIf="userRoleForm.get('userData.user_role').errors['required']">This field is required!</span>
+                        </span>
+                </div>
+              </div>
+              <button class="btn button1" type="submit" [disabled]="userRoleForm.invalid">Add</button>
+            </form>
+          </div>
+        </div>
+      </div>
+     </div> 

@@ -1,0 +1,54 @@
+<div class="sidenav">
+    <a href="javascript:void(0);" (click)="view_user()">View User</a>
+    <a href="javascript:void(0);" (click)="edit_user()">Edit User</a>
+    <a href="javascript:void(0);" (click)="addUserRole()">Add User Role</a>
+    <a href="javascript:void(0);" (click)="viewUserRole()">View User Role</a>
+    <a href="javascript:void(0);">View All User</a>
+</div>
+<div class="main">
+    <h2>View All Users</h2>
+<table class="display">
+    <thead>
+    <tr>
+        <th>
+          First Name
+        </th>
+        <th>
+            Last Name
+          </th>
+          <th>
+           Email
+          </th>
+          <th>
+           Role
+          </th>
+        
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+
+<!-- @foreach (var item in Model) { -->
+    
+    <tr *ngFor="let item of all_user_details;let $index=index">
+        <td>
+            {{item.first_name}}
+        </td>
+        <td>
+            {{item.last_name}}
+        </td>
+        <td>
+            {{item.email}}
+        </td>
+        <td>
+            {{item.role}}
+        </td>
+        <td>
+            <a href="javascript:void(0)" (click)="edit_user_selected(item.id)">Edit</a> |
+            <a href="javascript:void(0)" class="delete" (click)="delete_user(item.id)">Delete</a>
+        </td>
+    </tr>
+<!-- } -->
+</tbody>
+</table>
+</div>

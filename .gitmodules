@@ -1,0 +1,3 @@
+[submodule "AngularLoginBackend"]
+	path = AngularLoginBackend
+	url = https://github.com/pyalidhar/User-Management.git
